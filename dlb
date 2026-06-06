@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大懶豹國際娛樂 — Big Lazy Seals</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E8272A;
+  --yellow: #FFD600;
+  --black: #111111;
+  --white: #FAFAF5;
+  --gray: #F0EFE8;
+  --text: #222222;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  width: 14px; height: 14px;
+  background: var(--red);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: multiply;
+}
+.cursor.big { width: 48px; height: 48px; background: var(--yellow); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: var(--white);
+  border-bottom: 2px solid var(--black);
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem; font-weight: 800;
+  color: var(--black); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo .dot { width: 10px; height: 10px; background: var(--red); border-radius: 50%; display: inline-block; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.85rem; font-weight: 500; color: var(--black);
+  text-decoration: none; letter-spacing: 0.05em;
+  position: relative; padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--red);
+  transition: width 0.2s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding: 8rem 2.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(232,39,42,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(255,214,0,0.12) 0%, transparent 50%);
+}
+.hero-ticker {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--black); color: var(--yellow);
+  font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+  padding: 0.6rem 0; overflow: hidden; white-space: nowrap;
+  border-top: 2px solid var(--black);
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 20s linear infinite;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.hero-left { position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow); color: var(--black);
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+  padding: 5px 12px; border-radius: 20px;
+  margin-bottom: 1.5rem; text-transform: uppercase;
+}
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800; line-height: 1.05;
+  color: var(--black); margin-bottom: 1rem;
+}
+.hero-title .accent { color: var(--red); }
+.hero-title .underline {
+  position: relative; display: inline-block;
+}
+.hero-title .underline::after {
+  content: '';
+  position: absolute; bottom: 4px; left: 0; right: 0;
+  height: 6px; background: var(--yellow);
+  z-index: -1;
+}
+.hero-sub {
+  font-size: 1rem; color: #555; line-height: 1.7;
+  margin-bottom: 2rem; max-width: 420px;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--red); color: #fff;
+  font-weight: 700; font-size: 0.9rem;
+  padding: 0.85rem 1.8rem; border-radius: 50px;
+  text-decoration: none; border: 2px solid var(--red);
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: transparent; color: var(--red); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--black);
+  font-weight: 700; font-size: 0.9rem;
+  padding: 0.85rem 1.8rem; border-radius: 50px;
+  text-decoration: none; border: 2px solid var(--black);
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--black); color: var(--white); }
+
+/* Hero right - big seal illustration */
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-card {
+  background: var(--black); color: var(--white);
+  border-radius: 24px; padding: 2.5rem;
+  width: 100%; max-width: 380px;
+  position: relative; overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: var(--red); border-radius: 50%; opacity: 0.15;
+}
+.hero-card-tag {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--yellow); text-transform: uppercase; margin-bottom: 1rem;
+}
+.hero-card-title {
+  font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800;
+  margin-bottom: 0.5rem; line-height: 1.3;
+}
+.hero-card-desc { font-size: 0.9rem; color: #aaa; margin-bottom: 1.5rem; line-height: 1.6; }
+.hero-card-meta {
+  display: flex; gap: 1rem;
+}
+.meta-item { font-size: 0.8rem; color: #888; }
+.meta-item strong { display: block; color: var(--white); font-size: 1rem; }
+.soon-badge {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: var(--yellow); color: var(--black);
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em;
+  padding: 4px 10px; border-radius: 20px;
+  text-transform: uppercase;
+}
+.floating-tag {
+  position: absolute;
+  background: var(--white); border: 2px solid var(--black);
+  border-radius: 12px; padding: 0.5rem 0.9rem;
+  font-size: 0.8rem; font-weight: 700; color: var(--black);
+  box-shadow: 4px 4px 0 var(--black);
+  white-space: nowrap;
+}
+.floating-tag.t1 { bottom: -1rem; left: -2rem; animation: float1 3s ease-in-out infinite; }
+.floating-tag.t2 { top: 2rem; left: -2.5rem; animation: float2 3.5s ease-in-out infinite; }
+@keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* SECTIONS common */
+section { padding: 5rem 2.5rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 1rem;
+}
+.section-label::before {
+  content: ''; width: 24px; height: 2px; background: var(--red);
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800; line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* ABOUT */
+.about { background: var(--gray); }
+.about-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto;
+}
+.about-visual {
+  position: relative;
+}
+.about-card-stack { position: relative; height: 340px; }
+.acard {
+  position: absolute; border-radius: 20px; padding: 1.5rem;
+  width: 260px;
+}
+.acard.c1 {
+  background: var(--red); color: #fff;
+  top: 0; left: 0;
+  transform: rotate(-3deg);
+  box-shadow: 6px 6px 0 var(--black);
+}
+.acard.c2 {
+  background: var(--yellow); color: var(--black);
+  top: 60px; left: 80px;
+  transform: rotate(2deg);
+  box-shadow: 6px 6px 0 var(--black);
+}
+.acard.c3 {
+  background: var(--black); color: var(--white);
+  top: 140px; left: 20px;
+  transform: rotate(-1deg);
+  box-shadow: 6px 6px 0 var(--red);
+}
+.acard .card-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+.acard .card-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+.acard .card-desc { font-size: 0.8rem; opacity: 0.8; line-height: 1.5; }
+.about-text p {
+  font-size: 1rem; color: #444; line-height: 1.8; margin-bottom: 1rem;
+}
+.about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
+.tag {
+  background: var(--black); color: var(--white);
+  font-size: 0.78rem; font-weight: 700;
+  padding: 5px 14px; border-radius: 20px;
+}
+.tag.red { background: var(--red); }
+.tag.yellow { background: var(--yellow); color: var(--black); }
+
+/* EVENTS */
+.events { background: var(--white); }
+.events-inner { max-width: 1100px; margin: 0 auto; }
+.events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.event-card {
+  border: 2px solid var(--black); border-radius: 20px;
+  overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;
+}
+.event-card:hover { transform: translateY(-4px); box-shadow: 8px 8px 0 var(--black); }
+.event-header {
+  background: var(--black); padding: 1.5rem;
+  position: relative;
+}
+.event-date {
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+  color: var(--yellow); line-height: 1;
+}
+.event-month { font-size: 0.8rem; color: #888; font-weight: 500; letter-spacing: 0.1em; }
+.event-badge {
+  position: absolute; top: 1rem; right: 1rem;
+  background: var(--red); color: #fff;
+  font-size: 0.7rem; font-weight: 800;
+  padding: 4px 10px; border-radius: 20px;
+}
+.event-body { padding: 1.5rem; }
+.event-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+.event-desc { font-size: 0.85rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
+.event-meta { display: flex; gap: 1rem; font-size: 0.78rem; color: #888; }
+.event-meta span { display: flex; align-items: center; gap: 4px; }
+.coming-soon-card {
+  border: 2px dashed #CCC; border-radius: 20px;
+  padding: 2rem; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  min-height: 220px; color: #999;
+}
+.coming-soon-card .big { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.coming-soon-card p { font-size: 0.85rem; line-height: 1.6; }
+
+/* SURVEY */
+.survey { background: var(--black); color: var(--white); }
+.survey-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.survey .section-label { color: var(--yellow); }
+.survey .section-label::before { background: var(--yellow); }
+.survey .section-title { color: var(--white); }
+.survey-desc { font-size: 1rem; color: #aaa; line-height: 1.8; margin-bottom: 2rem; }
+.survey-perks { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+.perk {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 1rem; background: rgba(255,255,255,0.05);
+  border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+}
+.perk-icon { font-size: 1.4rem; flex-shrink: 0; }
+.perk-text strong { display: block; font-size: 0.9rem; color: var(--white); margin-bottom: 2px; }
+.perk-text span { font-size: 0.8rem; color: #888; }
+.survey-visual {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px; padding: 2rem;
+  text-align: center;
+}
+.survey-prize {
+  font-size: 3rem; margin-bottom: 1rem;
+}
+.survey-prize-title {
+  font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800;
+  color: var(--yellow); margin-bottom: 0.5rem;
+}
+.survey-prize-desc { font-size: 0.85rem; color: #888; line-height: 1.6; margin-bottom: 1.5rem; }
+.btn-yellow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow); color: var(--black);
+  font-weight: 800; font-size: 0.9rem;
+  padding: 0.85rem 1.8rem; border-radius: 50px;
+  text-decoration: none; border: 2px solid var(--yellow);
+  transition: all 0.2s;
+}
+.btn-yellow:hover { background: transparent; color: var(--yellow); }
+
+/* PODCAST */
+.podcast { background: var(--gray); }
+.podcast-inner { max-width: 1100px; margin: 0 auto; }
+.podcast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; align-items: start; }
+.podcast-main {
+  background: var(--black); border-radius: 24px; padding: 2rem;
+  color: var(--white); position: relative; overflow: hidden;
+}
+.podcast-main::after {
+  content: '🎙️'; position: absolute;
+  font-size: 6rem; bottom: -1rem; right: -1rem; opacity: 0.15;
+}
+.podcast-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--yellow); text-transform: uppercase; margin-bottom: 1rem; }
+.podcast-name { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--white); margin-bottom: 0.5rem; }
+.podcast-desc { font-size: 0.9rem; color: #aaa; line-height: 1.7; margin-bottom: 1.5rem; }
+.platform-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.platform-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0.75rem 1rem; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  text-decoration: none; color: var(--white);
+  font-size: 0.85rem; font-weight: 500;
+  transition: all 0.2s; background: rgba(255,255,255,0.04);
+}
+.platform-link:hover { border-color: var(--yellow); background: rgba(255,214,0,0.08); }
+.platform-link .pl-icon { font-size: 1.2rem; }
+.platform-link .pl-label { flex: 1; }
+.platform-link .pl-arrow { opacity: 0.4; font-size: 0.8rem; }
+.reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.reel-card {
+  background: var(--white); border: 2px solid var(--black);
+  border-radius: 16px; padding: 1.2rem;
+  transition: all 0.2s;
+}
+.reel-card:hover { transform: translateY(-3px); box-shadow: 5px 5px 0 var(--black); }
+.reel-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--red); line-height: 1; }
+.reel-unit { font-size: 0.75rem; color: #888; font-weight: 500; }
+.reel-label { font-size: 0.8rem; color: var(--text); font-weight: 600; margin-top: 0.5rem; }
+.ig-cta {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-radius: 16px; padding: 1.2rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: #fff;
+  transition: opacity 0.2s;
+}
+.ig-cta:hover { opacity: 0.9; }
+.ig-cta-left strong { display: block; font-size: 0.95rem; font-weight: 700; }
+.ig-cta-left span { font-size: 0.8rem; opacity: 0.85; }
+.ig-cta-arrow { font-size: 1.4rem; }
+
+/* CONTACT */
+.contact { background: var(--white); }
+.contact-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: start;
+}
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.8rem; font-weight: 700; color: var(--black); letter-spacing: 0.05em; }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  border: 2px solid var(--black); border-radius: 10px;
+  padding: 0.75rem 1rem; font-family: inherit; font-size: 0.9rem;
+  color: var(--text); background: var(--white);
+  outline: none; transition: border-color 0.2s;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--red); }
+.form-group textarea { min-height: 100px; resize: vertical; }
+.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 1.2rem; border: 2px solid var(--black);
+  border-radius: 16px; transition: all 0.2s;
+}
+.contact-item:hover { background: var(--gray); box-shadow: 4px 4px 0 var(--black); }
+.contact-icon { font-size: 1.5rem; flex-shrink: 0; }
+.contact-detail strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
+.contact-detail span { font-size: 0.85rem; color: #666; }
+.contact-detail a { color: var(--red); text-decoration: none; font-weight: 500; }
+
+/* FOOTER */
+footer {
+  background: var(--black); color: var(--white);
+  padding: 2rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 2px solid var(--red);
+}
+.footer-logo {
+  font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800;
+}
+.footer-logo span { color: var(--red); }
+.footer-copy { font-size: 0.78rem; color: #666; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { color: #888; text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--yellow); }
+
+/* ANIMATIONS */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.2rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 6rem 1.2rem 5rem; }
+  .hero-right { display: none; }
+  section { padding: 3.5rem 1.2rem; }
+  .about-inner, .survey-inner, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .about-card-stack { display: none; }
+  .podcast-grid { grid-template-columns: 1fr; }
+  .reels-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><span class="dot"></span> Big Lazy Seals</a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#events">即將上映</a></li>
+    <li><a href="#survey">問卷抽獎</a></li>
+    <li><a href="#podcast">自媒體</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">🎬 大懶豹國際娛樂</div>
+    <h1 class="hero-title">
+      讓家鄉的電影<br>
+      在台灣<br>
+      <span class="underline accent">大螢幕</span>上映
+    </h1>
+    <p class="hero-sub">我們是 Ray & James，兩位熱愛電影的好朋友。正在為在台灣的印尼朋友打造一個專屬的電影放映空間——讓你喝著印尼拉茶，和同鄉一起大笑、大哭。</p>
+    <div class="hero-btns">
+      <a href="#events" class="btn-primary">看即將上映活動 →</a>
+      <a href="#survey" class="btn-outline">填問卷抽好禮</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="floating-tag t2">🎙️ Big Lazy Seals Podcast</div>
+    <div class="hero-card">
+      <span class="soon-badge">即將到來</span>
+      <div class="hero-card-tag">首場試營運活動</div>
+      <div class="hero-card-title">印尼電影之夜<br>@ 中壢</div>
+      <div class="hero-card-desc">大螢幕放映 × 印尼拉茶 × 家鄉零食<br>細節持續更新中，敬請期待！</div>
+      <div class="hero-card-meta">
+        <div class="meta-item"><strong>📍</strong>桃園中壢</div>
+        <div class="meta-item"><strong>🎟️</strong>限量名額</div>
+        <div class="meta-item"><strong>📅</strong>2026</div>
+      </div>
+    </div>
+    <div class="floating-tag t1">🍵 印尼拉茶套餐</div>
+  </div>
+  <div class="hero-ticker">
+    <span class="ticker-inner">
+      大懶豹國際娛樂 &nbsp;✦&nbsp; BIG LAZY SEALS &nbsp;✦&nbsp; 印尼電影之夜 &nbsp;✦&nbsp; 中壢放映 &nbsp;✦&nbsp; 家鄉的好電影 &nbsp;✦&nbsp; FILM FOR YOU &nbsp;✦&nbsp; 大懶豹國際娛樂 &nbsp;✦&nbsp; BIG LAZY SEALS &nbsp;✦&nbsp; 印尼電影之夜 &nbsp;✦&nbsp; 中壢放映 &nbsp;✦&nbsp; 家鄉的好電影 &nbsp;✦&nbsp; FILM FOR YOU &nbsp;✦&nbsp;
+    </span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual fade-up">
+      <div class="about-card-stack">
+        <div class="acard c1">
+          <div class="card-emoji">🎬</div>
+          <div class="card-title">電影策展</div>
+          <div class="card-desc">精選印尼好電影，從商業大片到獨立電影</div>
+        </div>
+        <div class="acard c2">
+          <div class="card-emoji">🤝</div>
+          <div class="card-title">社群連結</div>
+          <div class="card-desc">在台灣創造屬於印尼朋友的共同記憶</div>
+        </div>
+        <div class="acard c3">
+          <div class="card-emoji">🍵</div>
+          <div class="card-title">家鄉體驗</div>
+          <div class="card-desc">印尼拉茶、家鄉零食，看電影更有味道</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text fade-up">
+      <div class="section-label">關於我們</div>
+      <h2 class="section-title">我們是誰？</h2>
+      <p>大家好！我們是 <strong>Ray & James</strong>，兩位熱愛電影的好朋友，同時也經營著談論電影的粉絲專頁 <strong>"Big Lazy Seals"</strong>。</p>
+      <p>我們受到國外獨立電影院的啟發，希望能在台灣為各位來自印尼的朋友——無論是工作、讀書、或旅遊——提供一個可以欣賞到來自家鄉好電影的平台。</p>
+      <p>每一場放映，不只是看電影，而是一個讓你暫時回到家鄉的空間。</p>
+      <div class="about-tags">
+        <span class="tag red">電影放映</span>
+        <span class="tag yellow">印尼文化</span>
+        <span class="tag">桃園中壢</span>
+        <span class="tag">社群活動</span>
+        <span class="tag red">家鄉套餐</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <div class="events-inner">
+    <div class="section-label">活動資訊</div>
+    <h2 class="section-title fade-up">即將上映</h2>
+    <div class="events-grid">
+      <div class="event-card fade-up">
+        <div class="event-header">
+          <div class="event-month">2026</div>
+          <div class="event-date">試營運</div>
+          <span class="event-badge">快訊</span>
+        </div>
+        <div class="event-body">
+          <div class="event-title">印尼電影之夜 Vol.1</div>
+          <div class="event-desc">首場試營運活動！大螢幕放映印尼電影，附印尼拉茶與家鄉零食。選片與日期持續更新，追蹤 IG 第一時間掌握資訊。</div>
+          <div class="event-meta">
+            <span>📍 桃園中壢</span>
+            <span>🎟️ 限量名額</span>
+          </div>
+        </div>
+      </div>
+      <div class="coming-soon-card fade-up">
+        <div class="big">📅</div>
+        <p>更多活動正在籌備中<br>填問卷搶先獲得通知</p>
+        <br>
+        <a href="#survey" class="btn-primary" style="font-size:0.82rem;padding:0.6rem 1.3rem">填問卷 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SURVEY -->
+<section class="survey" id="survey">
+  <div class="survey-inner">
+    <div class="fade-up">
+      <div class="section-label">問卷抽獎</div>
+      <h2 class="section-title">幫我們做得更好<br>還能抽好禮！</h2>
+      <p class="survey-desc">你的每一個回答，都會直接影響我們的選片方向、活動設計與票價規劃。填一份問卷，讓家鄉的電影更快出現在台灣的大螢幕上。</p>
+      <div class="survey-perks">
+        <div class="perk">
+          <div class="perk-icon">🎟️</div>
+          <div class="perk-text">
+            <strong>抽試營運首場體驗票</strong>
+            <span>VVIP 席位，率先體驗第一場印尼電影之夜</span>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🍵</div>
+          <div class="perk-text">
+            <strong>附贈印尼家鄉套餐</strong>
+            <span>印尼拉茶 + 家鄉零食，細節持續確認中</span>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">📲</div>
+          <div class="perk-text">
+            <strong>追蹤 @biglazyseals 為必要條件</strong>
+            <span>追蹤後填完問卷留下聯絡方式即完成登記</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="survey-visual fade-up">
+      <div class="survey-prize">🎁</div>
+      <div class="survey-prize-title">試營運首場體驗票<br>＋ 印尼家鄉套餐</div>
+      <div class="survey-prize-desc">完成問卷 + 追蹤 @biglazyseals<br>即自動進入抽獎！約需 2–3 分鐘。</div>
+      <a href="https://sites.google.com/view/dlb-entertainment/" target="_blank" class="btn-yellow">立即填寫問卷 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PODCAST -->
+<section class="podcast" id="podcast">
+  <div class="podcast-inner">
+    <div class="section-label">自媒體</div>
+    <h2 class="section-title fade-up">Big Lazy Seals</h2>
+    <div class="podcast-grid">
+      <div class="podcast-main fade-up">
+        <div class="podcast-tag">🎙️ Podcast & 影音</div>
+        <div class="podcast-name">大懶豹聊電影</div>
+        <div class="podcast-desc">兩個懶得動但看片很勤的傢伙，聊你沒時間查的電影冷知識、深度影評、還有那些你看完不知道怎麼說的感受。</div>
+        <div class="platform-links">
+          <a href="https://www.instagram.com/biglazyseals/" target="_blank" class="platform-link">
+            <span class="pl-icon">📸</span>
+            <span class="pl-label">Instagram @biglazyseals</span>
+            <span class="pl-arrow">↗</span>
+          </a>
+          <a href="#" class="platform-link">
+            <span class="pl-icon">🎵</span>
+            <span class="pl-label">Spotify Podcast（即將上線）</span>
+            <span class="pl-arrow">↗</span>
+          </a>
+          <a href="#" class="platform-link">
+            <span class="pl-icon">▶️</span>
+            <span class="pl-label">YouTube（即將上線）</span>
+            <span class="pl-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="reels-grid">
+          <div class="reel-card">
+            <div class="reel-num">3萬<span class="reel-unit">+</span></div>
+            <div class="reel-label">Reels 播放次數</div>
+          </div>
+          <div class="reel-card">
+            <div class="reel-num">持續<span class="reel-unit"> </span></div>
+            <div class="reel-label">影評內容更新中</div>
+          </div>
+          <div class="reel-card">
+            <div class="reel-num">2<span class="reel-unit">人</span></div>
+            <div class="reel-label">Ray & James 主持</div>
+          </div>
+          <div class="reel-card">
+            <div class="reel-num">電影<span class="reel-unit"> </span></div>
+            <div class="reel-label">深度影評 & 分析</div>
+          </div>
+          <a href="https://www.instagram.com/biglazyseals/" target="_blank" class="ig-cta">
+            <div class="ig-cta-left">
+              <strong>追蹤 @biglazyseals</strong>
+              <span>第一時間掌握活動資訊</span>
+            </div>
+            <div class="ig-cta-arrow">↗</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="fade-up">
+      <div class="section-label">聯絡我們</div>
+      <h2 class="section-title">有想法？<br>跟我們說！</h2>
+      <p style="font-size:1rem;color:#555;line-height:1.8;margin-bottom:2rem">無論是合作提案、場地推薦、選片建議，或只是想說聲加油，我們都很想聽到你的聲音。</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📸</div>
+          <div class="contact-detail">
+            <strong>Instagram</strong>
+            <span><a href="https://www.instagram.com/biglazyseals/" target="_blank">@biglazyseals</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <strong>活動地點</strong>
+            <span>桃園市中壢區（首場試營運）</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🎬</div>
+          <div class="contact-detail">
+            <strong>合作 & 媒體詢問</strong>
+            <span>請透過 Instagram DM 聯繫我們</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div style="background:var(--gray);border-radius:20px;padding:2rem;border:2px solid var(--black)">
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:1.5rem">傳訊息給我們</div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>你的名字</label>
+              <input type="text" placeholder="Ray / 小明...">
+            </div>
+            <div class="form-group">
+              <label>聯絡方式</label>
+              <input type="text" placeholder="IG / LINE / Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>詢問類型</label>
+            <select>
+              <option>活動相關</option>
+              <option>合作提案</option>
+              <option>選片建議</option>
+              <option>場地推薦</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>留下你想說的</label>
+            <textarea placeholder="想說什麼都可以，我們會盡快回覆！"></textarea>
+          </div>
+          <button class="btn-primary" style="border:none;cursor:pointer;justify-content:center">送出訊息 →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Big Lazy <span>Seals</span> ✦ 大懶豹國際娛樂</div>
+  <div class="footer-links">
+    <a href="#about">關於我們</a>
+    <a href="#events">即將上映</a>
+    <a href="#survey">問卷抽獎</a>
+    <a href="#podcast">自媒體</a>
+    <a href="https://www.instagram.com/biglazyseals/" target="_blank">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 大懶豹國際娛樂 DLB Entertainment</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// Scroll fade-up
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Contact form submit (placeholder)
+document.querySelector('.contact-form button').addEventListener('click', function() {
+  this.textContent = '✓ 已送出，我們會盡快回覆！';
+  this.style.background = '#22C55E';
+  this.style.border = '2px solid #22C55E';
+  this.disabled = true;
+});
+</script>
+</body>
+</html>
