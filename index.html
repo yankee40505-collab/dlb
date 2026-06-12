@@ -75,6 +75,7 @@
   .navlink:hover::after{ width:100%; }
 
   ::selection{ background:rgba(201,162,75,0.3); color:#fff; }
+  .lang-btn.active{ color:#C9A24B; font-weight:600; }
 </style>
 </head>
 
@@ -88,11 +89,22 @@
       <span class="text-muted text-[11px] tracking-[0.3em] uppercase hidden sm:inline group-hover:text-gold transition">Cinema</span>
     </a>
     <nav class="hidden md:flex items-center gap-9 text-[13px] tracking-[0.18em] uppercase text-cream/80">
-      <a href="#event" class="navlink">活動 · Event</a>
-      <a href="#features" class="navlink">品牌特色 · Brand</a>
-      <a href="#about" class="navlink">關於 · About</a>
-      <a href="#partner" class="navlink">合作 · Partner</a>
+      <a href="#event" class="navlink" data-i18n="nav-event">活動 · Event</a>
+      <a href="#features" class="navlink" data-i18n="nav-features">品牌特色 · Brand</a>
+      <a href="#about" class="navlink" data-i18n="nav-about">關於 · About</a>
+      <a href="#partner" class="navlink" data-i18n="nav-partner">合作 · Partner</a>
     </nav>
+    <div class="hidden md:flex items-center gap-1 border border-line rounded-full px-3 py-1.5 text-[11px] tracking-wide">
+      <button onclick="setLang('zh')" data-lang="zh" class="lang-btn active px-1.5 py-0.5 text-cream/50 hover:text-gold transition">中</button>
+      <span class="text-muted/40">·</span>
+      <button onclick="setLang('en')" data-lang="en" class="lang-btn px-1.5 py-0.5 text-cream/50 hover:text-gold transition">EN</button>
+      <span class="text-muted/40">·</span>
+      <button onclick="setLang('id')" data-lang="id" class="lang-btn px-1.5 py-0.5 text-cream/50 hover:text-gold transition">ID</button>
+      <span class="text-muted/40">·</span>
+      <button onclick="setLang('vi')" data-lang="vi" class="lang-btn px-1.5 py-0.5 text-cream/50 hover:text-gold transition">VI</button>
+      <span class="text-muted/40">·</span>
+      <button onclick="setLang('tl')" data-lang="tl" class="lang-btn px-1.5 py-0.5 text-cream/50 hover:text-gold transition">PH</button>
+    </div>
   </div>
 </header>
 
@@ -104,26 +116,25 @@
 
   <div class="max-w-[1240px] mx-auto px-6 md:px-10 w-full">
     <p data-load style="animation-delay:.05s" class="text-gold text-[12px] md:text-[13px] tracking-[0.4em] uppercase mb-7 flex items-center gap-4">
-      <span class="inline-block w-10 h-px bg-gold/60"></span>籌備中 · Coming Soon 2026
+      <span class="inline-block w-10 h-px bg-gold/60"></span><span data-i18n="hero-label">籌備中 · Coming Soon 2026</span>
     </p>
 
     <h1 class="font-tc font-light leading-[1.04] tracking-tight">
-      <span data-load style="animation-delay:.12s" class="block text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.6rem] text-cream">東南亞放映計畫</span>
+      <span data-load style="animation-delay:.12s" class="block text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.6rem] text-cream" data-i18n="hero-title">東南亞放映計畫</span>
       <span data-load style="animation-delay:.22s" class="block mt-3 md:mt-4 text-[1.2rem] sm:text-2xl md:text-3xl font-sans font-light text-gold/70 tracking-[0.15em] uppercase">by 大懶豹國際娛樂 DLB Entertainment</span>
     </h1>
 
-    <p data-load style="animation-delay:.34s" class="mt-9 max-w-2xl text-cream/70 text-base md:text-lg leading-relaxed font-light">
-      專注東南亞文化與散居敘事的分階段獨立電影院。<br class="hidden sm:block">
-      <span class="text-muted">A phased independent cinema dedicated to Southeast Asian culture &amp; diaspora storytelling.</span>
+    <p data-load style="animation-delay:.34s" class="mt-9 max-w-2xl text-cream/70 text-base md:text-lg leading-relaxed font-light" data-i18n="hero-desc">
+      專注東南亞文化與散居敘事的分階段獨立電影院。
     </p>
 
     <div data-load style="animation-delay:.46s" class="mt-11 flex flex-col sm:flex-row gap-4">
       <a href="https://sites.google.com/view/dlb-entertainment/" target="_blank" rel="noopener"
-         class="btn-gold bg-gold text-ink font-semibold px-8 py-4 rounded-full text-center tracking-wide">
-        填寫首場試映問卷 · Take the Survey
+         class="btn-gold bg-gold text-ink font-semibold px-8 py-4 rounded-full text-center tracking-wide" data-i18n="hero-btn-survey">
+        填寫首場試映問卷
       </a>
       <a href="https://www.instagram.com/biglazyseals/" target="_blank" rel="noopener"
-         class="btn-ghost border border-line text-cream/90 font-medium px-8 py-4 rounded-full text-center tracking-wide">
+         class="btn-ghost border border-line text-cream/90 font-medium px-8 py-4 rounded-full text-center tracking-wide" data-i18n="hero-btn-ig">
         追蹤官方 Instagram ↗
       </a>
     </div>
@@ -142,26 +153,26 @@
 <section id="event" class="py-16 md:py-24 border-y border-line bg-ink2">
   <div class="max-w-[1240px] mx-auto px-6 md:px-10">
     <p class="reveal text-gold text-[12px] tracking-[0.4em] uppercase mb-8 flex items-center gap-4">
-      <span class="inline-block w-10 h-px bg-gold/60"></span>下一場活動 · Next Event
+      <span class="inline-block w-10 h-px bg-gold/60"></span><span data-i18n="event-label">下一場活動 · Next Event</span>
     </p>
     <div class="reveal bg-card border border-line rounded-2xl p-8 md:p-10 max-w-3xl relative overflow-hidden">
       <!-- gold left accent -->
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-gold rounded-l-2xl"></div>
       <div class="pl-2">
         <span class="inline-block bg-gold text-ink text-[11px] font-semibold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6">Coming Soon</span>
-        <h2 class="font-tc text-3xl md:text-5xl font-light tracking-tight text-cream mb-3">下一場活動<br/>待公佈</h2>
-        <p class="text-muted text-sm tracking-[0.18em] uppercase mb-8">詳細資訊即將釋出 · Details to be announced</p>
+        <h2 class="font-tc text-3xl md:text-5xl font-light tracking-tight text-cream mb-3" data-i18n="event-title">下一場活動<br/>待公佈</h2>
+        <p class="text-muted text-sm tracking-[0.18em] uppercase mb-8" data-i18n="event-tba">詳細資訊即將釋出</p>
         <div class="flex flex-wrap gap-10 border-t border-line pt-7">
           <div>
-            <p class="text-[11px] tracking-[0.25em] uppercase text-gold/70 mb-1">日期 Date</p>
+            <p class="text-[11px] tracking-[0.25em] uppercase text-gold/70 mb-1" data-i18n="event-date">日期 · Date</p>
             <p class="text-cream/70 font-light">— TBA</p>
           </div>
           <div>
-            <p class="text-[11px] tracking-[0.25em] uppercase text-gold/70 mb-1">地點 Venue</p>
+            <p class="text-[11px] tracking-[0.25em] uppercase text-gold/70 mb-1" data-i18n="event-venue">地點 · Venue</p>
             <p class="text-cream/70 font-light">— TBA</p>
           </div>
           <div>
-            <p class="text-[11px] tracking-[0.25em] uppercase text-gold/70 mb-1">票價 Admission</p>
+            <p class="text-[11px] tracking-[0.25em] uppercase text-gold/70 mb-1" data-i18n="event-admission">票價 · Admission</p>
             <p class="text-cream/70 font-light">— TBA</p>
           </div>
         </div>
@@ -175,11 +186,11 @@
   <div class="max-w-[1240px] mx-auto px-6 md:px-10">
     <div class="reveal flex items-end justify-between flex-wrap gap-6 mb-16 md:mb-20">
       <div>
-        <p class="text-gold text-[12px] tracking-[0.4em] uppercase mb-5">02 — 品牌特色</p>
-        <h2 class="font-tc text-4xl md:text-6xl font-light tracking-tight">放映體驗</h2>
-        <p class="text-muted mt-3 text-lg tracking-tight font-light">What We Offer</p>
+        <p class="text-gold text-[12px] tracking-[0.4em] uppercase mb-5" data-i18n="feat-label">02 — 品牌特色</p>
+        <h2 class="font-tc text-4xl md:text-6xl font-light tracking-tight" data-i18n="feat-title">放映體驗</h2>
+        <p class="text-muted mt-3 text-lg tracking-tight font-light" data-i18n="feat-sub">What We Offer</p>
       </div>
-      <p class="max-w-sm text-cream/60 font-light leading-relaxed">
+      <p class="max-w-sm text-cream/60 font-light leading-relaxed" data-i18n="feat-tagline">
         小團隊，深策展。我們相信一場放映可以同時是電影、是社交、也是一次回家。
       </p>
     </div>
@@ -190,9 +201,9 @@
         <div class="flex items-start gap-5">
           <span class="text-gold/50 text-sm font-medium pt-1 tabular-nums">01</span>
           <div>
-            <h3 class="font-tc text-2xl font-medium">東南亞家鄉片選映</h3>
-            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4">Hometown Films from SEA</p>
-            <p class="text-cream/65 font-light leading-relaxed">精選那些在主流影院難得一見、卻最貼近家鄉土地與日常生活的東南亞獨立電影。看見自己的故事被放上大螢幕。</p>
+            <h3 class="font-tc text-2xl font-medium" data-i18n="c01-title">東南亞家鄉片選映</h3>
+            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4" data-i18n="c01-sub">Hometown Films from SEA</p>
+            <p class="text-cream/65 font-light leading-relaxed" data-i18n="c01-desc">精選那些在主流影院難得一見、卻最貼近家鄉土地與日常生活的東南亞獨立電影。看見自己的故事被放上大螢幕。</p>
             <div class="exp-bar mt-6 h-px w-12 bg-gold/70 transition-all duration-500"></div>
           </div>
         </div>
@@ -203,9 +214,9 @@
         <div class="flex items-start gap-5">
           <span class="text-gold/50 text-sm font-medium pt-1 tabular-nums">02</span>
           <div>
-            <h3 class="font-tc text-2xl font-medium">中文與家鄉語雙語字幕</h3>
-            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4">Bilingual Subtitles · Your Language</p>
-            <p class="text-cream/65 font-light leading-relaxed">每場放映同時提供中文字幕與家鄉語言字幕（印尼文／越南文／菲律賓文），讓你在異鄉也能毫無距離地感受電影。</p>
+            <h3 class="font-tc text-2xl font-medium" data-i18n="c02-title">中文與家鄉語雙語字幕</h3>
+            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4" data-i18n="c02-sub">Bilingual Subtitles · Your Language</p>
+            <p class="text-cream/65 font-light leading-relaxed" data-i18n="c02-desc">每場放映同時提供中文字幕與家鄉語言字幕（印尼文／越南文／菲律賓文），讓你在異鄉也能毫無距離地感受電影。</p>
             <div class="exp-bar mt-6 h-px w-12 bg-gold/70 transition-all duration-500"></div>
           </div>
         </div>
@@ -216,9 +227,9 @@
         <div class="flex items-start gap-5">
           <span class="text-gold/50 text-sm font-medium pt-1 tabular-nums">03</span>
           <div>
-            <h3 class="font-tc text-2xl font-medium">家鄉飲食文化與微醺社交</h3>
-            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4">Food, Drinks & Community Vibe</p>
-            <p class="text-cream/65 font-light leading-relaxed">熟悉的家鄉飲品、小食、與同鄉的夜晚。把看電影從一個人的事，變成一群人共享的溫暖時光。</p>
+            <h3 class="font-tc text-2xl font-medium" data-i18n="c03-title">家鄉飲食文化與微醺社交</h3>
+            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4" data-i18n="c03-sub">Food, Drinks & Community Vibe</p>
+            <p class="text-cream/65 font-light leading-relaxed" data-i18n="c03-desc">熟悉的家鄉飲品、小食、與同鄉的夜晚。把看電影從一個人的事，變成一群人共享的溫暖時光。</p>
             <div class="exp-bar mt-6 h-px w-12 bg-gold/70 transition-all duration-500"></div>
           </div>
         </div>
@@ -229,9 +240,9 @@
         <div class="flex items-start gap-5">
           <span class="text-gold/50 text-sm font-medium pt-1 tabular-nums">04</span>
           <div>
-            <h3 class="font-tc text-2xl font-medium">深度映後跨文化交流</h3>
-            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4">Post-Screening Discussions</p>
-            <p class="text-cream/65 font-light leading-relaxed">放映只是開始。映後我們一起聊，讓不同文化背景的觀眾在同一個空間裡彼此聽見。</p>
+            <h3 class="font-tc text-2xl font-medium" data-i18n="c04-title">深度映後跨文化交流</h3>
+            <p class="text-gold/80 text-sm tracking-wide mt-1 mb-4" data-i18n="c04-sub">Post-Screening Discussions</p>
+            <p class="text-cream/65 font-light leading-relaxed" data-i18n="c04-desc">放映只是開始。映後我們一起聊，讓不同文化背景的觀眾在同一個空間裡彼此聽見。</p>
             <div class="exp-bar mt-6 h-px w-12 bg-gold/70 transition-all duration-500"></div>
           </div>
         </div>
@@ -242,9 +253,9 @@
         <div class="flex items-start gap-5">
           <span class="text-gold/30 text-sm font-medium pt-1 tabular-nums">05</span>
           <div>
-            <h3 class="font-tc text-2xl font-medium text-cream/80">倫敦電影學院・編劇碩士深度策展</h3>
-            <p class="text-gold/60 text-sm tracking-wide mt-1 mb-4">LFS Screenwriting MA · Narrative Curation</p>
-            <p class="text-cream/55 font-light leading-relaxed max-w-2xl">由倫敦電影學院（LFS）編劇碩士主導策展，每一場放映都有清楚的敘事脈絡與主題觀點，而非隨機湊片——這是大懶豹與一般放映活動最根本的差異。</p>
+            <h3 class="font-tc text-2xl font-medium text-cream/80" data-i18n="c05-title">倫敦電影學院・編劇碩士深度策展</h3>
+            <p class="text-gold/60 text-sm tracking-wide mt-1 mb-4" data-i18n="c05-sub">LFS Screenwriting MA · Narrative Curation</p>
+            <p class="text-cream/55 font-light leading-relaxed max-w-2xl" data-i18n="c05-desc">由倫敦電影學院（LFS）編劇碩士主導策展，每一場放映都有清楚的敘事脈絡與主題觀點，而非隨機湊片——這是大懶豹與一般放映活動最根本的差異。</p>
             <div class="exp-bar mt-6 h-px w-12 bg-gold/40 transition-all duration-500"></div>
           </div>
         </div>
@@ -266,12 +277,12 @@
     </div>
 
     <div class="reveal order-1 lg:order-2">
-      <p class="text-gold text-[12px] tracking-[0.4em] uppercase mb-5">03 — 關於我們</p>
-      <h2 class="font-tc text-4xl md:text-6xl font-light tracking-tight leading-tight">我們是誰<span class="text-gold/70 text-3xl md:text-4xl block font-sans font-light mt-2">Who We Are</span></h2>
+      <p class="text-gold text-[12px] tracking-[0.4em] uppercase mb-5" data-i18n="about-label">03 — 關於我們</p>
+      <h2 class="font-tc text-4xl md:text-6xl font-light tracking-tight leading-tight" data-i18n="about-title">我們是誰</h2>
 
       <div class="mt-8 space-y-5 text-cream/70 font-light leading-relaxed text-base md:text-lg max-w-xl">
-        <p>大懶豹國際娛樂是一支只有兩個人的微型團隊。規模很小，野心卻不小——我們想把國際視野與在台東南亞移工的影像作品，帶進台灣的大螢幕。</p>
-        <p>我們受到國外獨立電影院的啟發，相信好的策展能讓一場放映超越娛樂，成為跨文化理解的起點。從選片、場地到映後交流，每個環節都親手把關。</p>
+        <p data-i18n="about-p1">大懶豹國際娛樂是一支只有兩個人的微型團隊。規模很小，野心卻不小——我們想把國際視野與在台東南亞移工的影像作品，帶進台灣的大螢幕。</p>
+        <p data-i18n="about-p2">我們受到國外獨立電影院的啟發，相信好的策展能讓一場放映超越娛樂，成為跨文化理解的起點。從選片、場地到映後交流，每個環節都親手把關。</p>
       </div>
 
       <div class="mt-10 flex flex-wrap gap-3">
@@ -288,12 +299,12 @@
   <div class="max-w-[1240px] mx-auto px-6 md:px-10">
     <div class="reveal flex items-center gap-6 mb-10">
       <span class="inline-block w-10 h-px bg-gold/60"></span>
-      <p class="text-gold text-[12px] tracking-[0.4em] uppercase">社群合作 · Community Partners</p>
+      <p class="text-gold text-[12px] tracking-[0.4em] uppercase" data-i18n="comm-label">社群合作 · Community Partners</p>
     </div>
     <div class="bg-card border border-dashed border-line rounded-2xl p-10 md:p-14 text-center">
-      <p class="text-muted text-[12px] tracking-[0.35em] uppercase mb-4">即將公佈 · Coming Soon</p>
-      <h3 class="font-tc text-2xl md:text-3xl font-light text-cream/70 mb-4">跨國社群合作夥伴</h3>
-      <p class="text-cream/45 font-light leading-relaxed max-w-lg mx-auto">與外籍學生會、移工社群組織及跨文化交流團體的正式合作成果，將在此區塊陸續公告。</p>
+      <p class="text-muted text-[12px] tracking-[0.35em] uppercase mb-4" data-i18n="comm-soon">即將公佈 · Coming Soon</p>
+      <h3 class="font-tc text-2xl md:text-3xl font-light text-cream/70 mb-4" data-i18n="comm-title">跨國社群合作夥伴</h3>
+      <p class="text-cream/45 font-light leading-relaxed max-w-lg mx-auto" data-i18n="comm-desc">與外籍學生會、移工社群組織及跨文化交流團體的正式合作成果，將在此區塊陸續公告。</p>
     </div>
   </div>
 </section>
@@ -302,10 +313,10 @@
 <section id="partner" class="py-24 md:py-36">
   <div class="max-w-[1240px] mx-auto px-6 md:px-10">
     <div class="reveal max-w-2xl mb-16">
-      <p class="text-gold text-[12px] tracking-[0.4em] uppercase mb-5">04 — 與我們合作</p>
-      <h2 class="font-tc text-4xl md:text-6xl font-light tracking-tight leading-tight">一起把故事帶上大螢幕</h2>
-      <p class="text-muted mt-3 text-lg tracking-tight font-light">Partnership &amp; Collaboration</p>
-      <p class="mt-7 text-cream/70 font-light leading-relaxed">
+      <p class="text-gold text-[12px] tracking-[0.4em] uppercase mb-5" data-i18n="part-label">04 — 與我們合作</p>
+      <h2 class="font-tc text-4xl md:text-6xl font-light tracking-tight leading-tight" data-i18n="part-title">一起把故事帶上大螢幕</h2>
+      <p class="text-muted mt-3 text-lg tracking-tight font-light" data-i18n="part-sub">Partnership &amp; Collaboration</p>
+      <p class="mt-7 text-cream/70 font-light leading-relaxed" data-i18n="part-desc">
         我們誠摯歡迎電影發行商授權洽談、藝文場地租借合作，以及跨文化交流補助計畫的共同提案。一個小而專注的團隊，期待與重視內容深度的夥伴同行。
       </p>
     </div>
@@ -313,21 +324,21 @@
     <div class="grid md:grid-cols-3 gap-6">
       <div class="reveal bg-card border border-line rounded-2xl p-8 hover:border-gold/40 transition-colors duration-500">
         <span class="text-gold text-2xl">◐</span>
-        <h3 class="font-tc text-xl font-medium mt-5">影片授權</h3>
-        <p class="text-gold/70 text-sm tracking-wide mt-1 mb-4">Film Licensing</p>
-        <p class="text-cream/60 font-light leading-relaxed text-sm">片商、發行商與創作者，歡迎洽談放映授權與合作分潤。</p>
+        <h3 class="font-tc text-xl font-medium mt-5" data-i18n="p1-title">影片授權</h3>
+        <p class="text-gold/70 text-sm tracking-wide mt-1 mb-4" data-i18n="p1-sub">Film Licensing</p>
+        <p class="text-cream/60 font-light leading-relaxed text-sm" data-i18n="p1-desc">片商、發行商與創作者，歡迎洽談放映授權與合作分潤。</p>
       </div>
       <div class="reveal bg-card border border-line rounded-2xl p-8 hover:border-gold/40 transition-colors duration-500">
         <span class="text-gold text-2xl">◧</span>
-        <h3 class="font-tc text-xl font-medium mt-5">場地合作</h3>
-        <p class="text-gold/70 text-sm tracking-wide mt-1 mb-4">Venue Partnership</p>
-        <p class="text-cream/60 font-light leading-relaxed text-sm">藝文空間、咖啡廳、戶外場域，歡迎提供場地共創放映之夜。</p>
+        <h3 class="font-tc text-xl font-medium mt-5" data-i18n="p2-title">場地合作</h3>
+        <p class="text-gold/70 text-sm tracking-wide mt-1 mb-4" data-i18n="p2-sub">Venue Partnership</p>
+        <p class="text-cream/60 font-light leading-relaxed text-sm" data-i18n="p2-desc">藝文空間、咖啡廳、戶外場域，歡迎提供場地共創放映之夜。</p>
       </div>
       <div class="reveal bg-card border border-line rounded-2xl p-8 hover:border-gold/40 transition-colors duration-500">
         <span class="text-gold text-2xl">◳</span>
-        <h3 class="font-tc text-xl font-medium mt-5">補助計畫</h3>
-        <p class="text-gold/70 text-sm tracking-wide mt-1 mb-4">Cultural Grants</p>
-        <p class="text-cream/60 font-light leading-relaxed text-sm">文化部與跨文化交流相關補助，歡迎共同提案、攜手申請。</p>
+        <h3 class="font-tc text-xl font-medium mt-5" data-i18n="p3-title">補助計畫</h3>
+        <p class="text-gold/70 text-sm tracking-wide mt-1 mb-4" data-i18n="p3-sub">Cultural Grants</p>
+        <p class="text-cream/60 font-light leading-relaxed text-sm" data-i18n="p3-desc">文化部與跨文化交流相關補助，歡迎共同提案、攜手申請。</p>
       </div>
     </div>
 
@@ -409,6 +420,311 @@
     entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
   }, { threshold: 0.12 });
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // ── i18n ────────────────────────────────────────────────────────
+  const T = {
+    zh: {
+      "nav-event":    "活動",
+      "nav-features": "品牌特色",
+      "nav-about":    "關於",
+      "nav-partner":  "合作",
+      "hero-label":   "籌備中 · Coming Soon 2026",
+      "hero-title":   "東南亞放映計畫",
+      "hero-desc":    "專注東南亞文化與散居敘事的分階段獨立電影院。",
+      "hero-btn-survey": "填寫首場試映問卷",
+      "hero-btn-ig":  "追蹤官方 Instagram ↗",
+      "event-label":  "下一場活動 · Next Event",
+      "event-title":  "下一場活動<br/>待公佈",
+      "event-tba":    "詳細資訊即將釋出",
+      "event-date":   "日期 · Date",
+      "event-venue":  "地點 · Venue",
+      "event-admission": "票價 · Admission",
+      "feat-label":   "02 — 品牌特色",
+      "feat-title":   "放映體驗",
+      "feat-sub":     "What We Offer",
+      "feat-tagline": "小團隊，深策展。我們相信一場放映可以同時是電影、是社交、也是一次回家。",
+      "c01-title":    "東南亞家鄉片選映",
+      "c01-sub":      "Hometown Films from SEA",
+      "c01-desc":     "精選那些在主流影院難得一見、卻最貼近家鄉土地與日常生活的東南亞獨立電影。看見自己的故事被放上大螢幕。",
+      "c02-title":    "中文與家鄉語雙語字幕",
+      "c02-sub":      "Bilingual Subtitles · Your Language",
+      "c02-desc":     "每場放映同時提供中文字幕與家鄉語言字幕（印尼文／越南文／菲律賓文），讓你在異鄉也能毫無距離地感受電影。",
+      "c03-title":    "家鄉飲食文化與微醺社交",
+      "c03-sub":      "Food, Drinks & Community Vibe",
+      "c03-desc":     "熟悉的家鄉飲品、小食、與同鄉的夜晚。把看電影從一個人的事，變成一群人共享的溫暖時光。",
+      "c04-title":    "深度映後跨文化交流",
+      "c04-sub":      "Post-Screening Discussions",
+      "c04-desc":     "放映只是開始。映後我們一起聊，讓不同文化背景的觀眾在同一個空間裡彼此聽見。",
+      "c05-title":    "倫敦電影學院・編劇碩士深度策展",
+      "c05-sub":      "LFS Screenwriting MA · Narrative Curation",
+      "c05-desc":     "由倫敦電影學院（LFS）編劇碩士主導策展，每一場放映都有清楚的敘事脈絡與主題觀點，而非隨機湊片——這是大懶豹與一般放映活動最根本的差異。",
+      "about-label":  "03 — 關於我們",
+      "about-title":  "我們是誰",
+      "about-p1":     "大懶豹國際娛樂是一支只有兩個人的微型團隊。規模很小，野心卻不小——我們想把國際視野與在台東南亞移工的影像作品，帶進台灣的大螢幕。",
+      "about-p2":     "我們受到國外獨立電影院的啟發，相信好的策展能讓一場放映超越娛樂，成為跨文化理解的起點。從選片、場地到映後交流，每個環節都親手把關。",
+      "comm-label":   "社群合作 · Community Partners",
+      "comm-soon":    "即將公佈 · Coming Soon",
+      "comm-title":   "跨國社群合作夥伴",
+      "comm-desc":    "與外籍學生會、移工社群組織及跨文化交流團體的正式合作成果，將在此區塊陸續公告。",
+      "part-label":   "04 — 與我們合作",
+      "part-title":   "一起把故事帶上大螢幕",
+      "part-sub":     "Partnership & Collaboration",
+      "part-desc":    "我們誠摯歡迎電影發行商授權洽談、藝文場地租借合作，以及跨文化交流補助計畫的共同提案。一個小而專注的團隊，期待與重視內容深度的夥伴同行。",
+      "p1-title":     "影片授權",
+      "p1-sub":       "Film Licensing",
+      "p1-desc":      "片商、發行商與創作者，歡迎洽談放映授權與合作分潤。",
+      "p2-title":     "場地合作",
+      "p2-sub":       "Venue Partnership",
+      "p2-desc":      "藝文空間、咖啡廳、戶外場域，歡迎提供場地共創放映之夜。",
+      "p3-title":     "補助計畫",
+      "p3-sub":       "Cultural Grants",
+      "p3-desc":      "文化部與跨文化交流相關補助，歡迎共同提案、攜手申請。",
+    },
+    en: {
+      "nav-event":    "Events",
+      "nav-features": "Brand",
+      "nav-about":    "About",
+      "nav-partner":  "Partner",
+      "hero-label":   "Coming Soon · 2026",
+      "hero-title":   "Southeast Asian Cinema Project",
+      "hero-desc":    "A phased independent cinema dedicated to Southeast Asian culture & diaspora storytelling.",
+      "hero-btn-survey": "Take the Survey",
+      "hero-btn-ig":  "Follow on Instagram ↗",
+      "event-label":  "Next Event",
+      "event-title":  "Next Event<br/>To Be Announced",
+      "event-tba":    "Details to be announced",
+      "event-date":   "Date",
+      "event-venue":  "Venue",
+      "event-admission": "Admission",
+      "feat-label":   "02 — Brand Features",
+      "feat-title":   "Cinema Experience",
+      "feat-sub":     "What We Offer",
+      "feat-tagline": "Small team, deep curation. We believe a screening can be cinema, community, and a journey home.",
+      "c01-title":    "Hometown Films from SEA",
+      "c01-sub":      "Southeast Asian Independent Films",
+      "c01-desc":     "Carefully selected Southeast Asian independent films rarely seen in mainstream cinemas, yet closest to the pulse of home. See your own story on the big screen.",
+      "c02-title":    "Bilingual Subtitles",
+      "c02-sub":      "Your Language, Every Screening",
+      "c02-desc":     "Every screening provides both Chinese subtitles and subtitles in your native language (Indonesian / Vietnamese / Filipino), so you can enjoy the film without barriers, even far from home.",
+      "c03-title":    "Food, Drinks & Community",
+      "c03-sub":      "Hometown Vibes All Night",
+      "c03-desc":     "Familiar drinks, snacks from home, and a night with fellow countrymen. Turn watching a film from a solitary moment into a warm evening shared together.",
+      "c04-title":    "Post-Screening Dialogue",
+      "c04-sub":      "Cross-Cultural Discussions",
+      "c04-desc":     "The screening is just the beginning. Afterward, we talk together — letting audiences from different backgrounds hear each other in the same space.",
+      "c05-title":    "LFS Screenwriting MA · Narrative Curation",
+      "c05-sub":      "London Film School · Curated with Depth",
+      "c05-desc":     "Curated by a London Film School (LFS) Screenwriting MA graduate. Every screening has a clear narrative thread and perspective — not just a random lineup. This is what sets DLB apart.",
+      "about-label":  "03 — About Us",
+      "about-title":  "Who We Are",
+      "about-p1":     "DLB Entertainment is a two-person micro-team. Small in size, but not in ambition — we want to bring an international perspective and Southeast Asian migrant worker stories to Taiwan's big screens.",
+      "about-p2":     "Inspired by independent cinemas around the world, we believe great curation can make a screening more than entertainment — a starting point for cross-cultural understanding. Every detail, from film selection to post-screening discussions, is handled personally.",
+      "comm-label":   "Community Partners",
+      "comm-soon":    "Coming Soon",
+      "comm-title":   "Transnational Community Partnerships",
+      "comm-desc":    "Formal collaborations with international student associations, migrant worker organizations, and cross-cultural groups will be announced here as they are established.",
+      "part-label":   "04 — Work With Us",
+      "part-title":   "Let's Bring Stories to the Big Screen",
+      "part-sub":     "Partnership & Collaboration",
+      "part-desc":    "We welcome film distributors for licensing talks, arts venues for space collaboration, and co-proposals for cross-cultural exchange grants. A small, focused team — looking for partners who value depth.",
+      "p1-title":     "Film Licensing",
+      "p1-sub":       "For Distributors & Filmmakers",
+      "p1-desc":      "Distributors, studios and independent filmmakers are welcome to discuss screening rights and revenue sharing.",
+      "p2-title":     "Venue Partnership",
+      "p2-sub":       "For Spaces & Venues",
+      "p2-desc":      "Art spaces, cafés and outdoor venues — welcome to co-create a screening night with us.",
+      "p3-title":     "Cultural Grants",
+      "p3-sub":       "Joint Applications",
+      "p3-desc":      "Cross-cultural exchange grants from government bodies — we welcome co-applicants and proposal partners.",
+    },
+    id: {
+      "nav-event":    "Acara",
+      "nav-features": "Brand",
+      "nav-about":    "Tentang",
+      "nav-partner":  "Kemitraan",
+      "hero-label":   "Segera Hadir · 2026",
+      "hero-title":   "Proyek Bioskop Asia Tenggara",
+      "hero-desc":    "Bioskop independen bertahap yang didedikasikan untuk budaya Asia Tenggara dan kisah diaspora.",
+      "hero-btn-survey": "Isi Survei",
+      "hero-btn-ig":  "Ikuti Instagram ↗",
+      "event-label":  "Acara Berikutnya",
+      "event-title":  "Acara Berikutnya<br/>Segera Diumumkan",
+      "event-tba":    "Detail akan segera dirilis",
+      "event-date":   "Tanggal",
+      "event-venue":  "Lokasi",
+      "event-admission": "Tiket",
+      "feat-label":   "02 — Fitur Brand",
+      "feat-title":   "Pengalaman Sinema",
+      "feat-sub":     "Yang Kami Tawarkan",
+      "feat-tagline": "Tim kecil, kurasi mendalam. Kami percaya satu pemutaran bisa menjadi film, kebersamaan, dan perjalanan pulang.",
+      "c01-title":    "Film Kampung Halaman",
+      "c01-sub":      "Film Independen Asia Tenggara",
+      "c01-desc":     "Film independen Asia Tenggara yang jarang terlihat di bioskop umum, namun paling dekat dengan denyut nadi kampung halaman dan kehidupan sehari-hari. Lihat ceritamu sendiri di layar lebar.",
+      "c02-title":    "Subtitle Dua Bahasa",
+      "c02-sub":      "Bahasa Mandarin & Bahasa Asalmu",
+      "c02-desc":     "Setiap pemutaran menyediakan subtitle Mandarin dan subtitle bahasa asalmu (Indonesia / Vietnam / Filipina), agar kamu bisa menikmati film tanpa hambatan meski jauh dari kampung halaman.",
+      "c03-title":    "Makanan, Minuman & Komunitas",
+      "c03-sub":      "Suasana Kampung Halaman",
+      "c03-desc":     "Minuman dan camilan khas kampung halaman, dan malam bersama sesama rekan. Ubah menonton film dari pengalaman sendiri menjadi malam hangat bersama.",
+      "c04-title":    "Dialog Pasca-Pemutaran",
+      "c04-sub":      "Diskusi Lintas Budaya",
+      "c04-desc":     "Pemutaran hanyalah awal. Setelahnya, kita bicara bersama — membiarkan penonton dari latar belakang berbeda saling mendengar dalam satu ruang.",
+      "c05-title":    "MA Skenario LFS · Dikurasi Mendalam",
+      "c05-sub":      "London Film School · Kurasi Bernarasi",
+      "c05-desc":     "Dikurasi oleh lulusan MA Penulisan Skenario London Film School (LFS). Setiap pemutaran memiliki benang naratif dan sudut pandang yang jelas — bukan sekadar daftar acak. Inilah yang membedakan DLB.",
+      "about-label":  "03 — Tentang Kami",
+      "about-title":  "Siapa Kami",
+      "about-p1":     "DLB Entertainment adalah tim mikro yang hanya terdiri dari dua orang. Kecil ukurannya, tapi ambisinya besar — kami ingin membawa sudut pandang internasional dan karya pekerja migran Asia Tenggara ke layar lebar Taiwan.",
+      "about-p2":     "Terinspirasi oleh bioskop independen di seluruh dunia, kami percaya kurasi yang baik bisa membuat pemutaran melampaui hiburan — menjadi titik awal pemahaman lintas budaya. Setiap detail ditangani sendiri.",
+      "comm-label":   "Mitra Komunitas",
+      "comm-soon":    "Segera Hadir",
+      "comm-title":   "Kemitraan Komunitas Transnasional",
+      "comm-desc":    "Kolaborasi resmi dengan asosiasi mahasiswa internasional, organisasi pekerja migran, dan kelompok pertukaran budaya akan diumumkan di sini.",
+      "part-label":   "04 — Bekerja Sama",
+      "part-title":   "Mari Bawa Cerita ke Layar Lebar",
+      "part-sub":     "Kemitraan & Kolaborasi",
+      "part-desc":    "Kami menyambut distributor film untuk diskusi lisensi, venue seni untuk kolaborasi ruang, dan co-proposal hibah pertukaran budaya. Tim kecil yang fokus — mencari mitra yang menghargai kedalaman.",
+      "p1-title":     "Lisensi Film",
+      "p1-sub":       "Untuk Distributor & Sineas",
+      "p1-desc":      "Distributor, studio, dan sineas independen dipersilakan mendiskusikan hak pemutaran dan bagi hasil.",
+      "p2-title":     "Kemitraan Venue",
+      "p2-sub":       "Untuk Ruang & Lokasi",
+      "p2-desc":      "Ruang seni, kafe, dan venue luar ruang — selamat datang untuk bersama menciptakan malam pemutaran.",
+      "p3-title":     "Hibah Budaya",
+      "p3-sub":       "Aplikasi Bersama",
+      "p3-desc":      "Hibah pertukaran budaya dari lembaga pemerintah — kami menyambut rekan co-applicant dan mitra proposal.",
+    },
+    vi: {
+      "nav-event":    "Sự kiện",
+      "nav-features": "Thương hiệu",
+      "nav-about":    "Về chúng tôi",
+      "nav-partner":  "Hợp tác",
+      "hero-label":   "Sắp Ra Mắt · 2026",
+      "hero-title":   "Dự Án Chiếu Phim Đông Nam Á",
+      "hero-desc":    "Rạp chiếu phim độc lập theo giai đoạn, tập trung vào văn hóa Đông Nam Á và câu chuyện của cộng đồng diaspora.",
+      "hero-btn-survey": "Điền Khảo Sát",
+      "hero-btn-ig":  "Theo dõi Instagram ↗",
+      "event-label":  "Sự Kiện Tiếp Theo",
+      "event-title":  "Sự Kiện Tiếp Theo<br/>Sẽ Được Thông Báo",
+      "event-tba":    "Chi tiết sẽ sớm được công bố",
+      "event-date":   "Ngày",
+      "event-venue":  "Địa điểm",
+      "event-admission": "Vé vào cửa",
+      "feat-label":   "02 — Đặc Điểm Thương Hiệu",
+      "feat-title":   "Trải Nghiệm Điện Ảnh",
+      "feat-sub":     "Những Gì Chúng Tôi Mang Lại",
+      "feat-tagline": "Nhóm nhỏ, tuyển chọn sâu sắc. Chúng tôi tin rằng một buổi chiếu phim có thể là điện ảnh, cộng đồng, và hành trình về nhà.",
+      "c01-title":    "Phim Quê Hương Đông Nam Á",
+      "c01-sub":      "Phim Độc Lập Đông Nam Á",
+      "c01-desc":     "Những bộ phim độc lập Đông Nam Á hiếm khi xuất hiện ở rạp thương mại, nhưng lại gần gũi nhất với cuộc sống và đất quê hương. Nhìn thấy câu chuyện của bạn trên màn ảnh lớn.",
+      "c02-title":    "Phụ Đề Song Ngữ",
+      "c02-sub":      "Ngôn Ngữ Của Bạn, Mỗi Buổi Chiếu",
+      "c02-desc":     "Mỗi buổi chiếu đều có phụ đề tiếng Trung và phụ đề ngôn ngữ quê hương của bạn (Indonesia / Việt Nam / Philippines), để bạn trải nghiệm phim không rào cản dù ở xa nhà.",
+      "c03-title":    "Ẩm Thực & Cộng Đồng",
+      "c03-sub":      "Không Khí Quê Nhà",
+      "c03-desc":     "Đồ uống và đồ ăn quen thuộc từ quê hương, và một đêm cùng đồng hương. Biến việc xem phim từ một mình thành buổi tối ấm áp cùng mọi người.",
+      "c04-title":    "Đối Thoại Sau Chiếu Phim",
+      "c04-sub":      "Thảo Luận Đa Văn Hóa",
+      "c04-desc":     "Buổi chiếu chỉ là khởi đầu. Sau đó, chúng ta nói chuyện cùng nhau — để khán giả từ các nền văn hóa khác nhau được lắng nghe nhau trong cùng một không gian.",
+      "c05-title":    "Thạc Sĩ Biên Kịch LFS · Tuyển Chọn Chuyên Sâu",
+      "c05-sub":      "London Film School · Biên Tập Theo Mạch Kể Chuyện",
+      "c05-desc":     "Được tuyển chọn bởi cựu sinh viên Thạc sĩ Biên kịch Trường Điện ảnh London (LFS). Mỗi buổi chiếu có chủ đề và góc nhìn rõ ràng — không phải danh sách ngẫu nhiên. Đây là điều phân biệt DLB.",
+      "about-label":  "03 — Về Chúng Tôi",
+      "about-title":  "Chúng Tôi Là Ai",
+      "about-p1":     "DLB Entertainment là nhóm siêu nhỏ chỉ có hai người. Quy mô nhỏ, nhưng tham vọng không nhỏ — chúng tôi muốn đưa góc nhìn quốc tế và những câu chuyện của người lao động di cư Đông Nam Á lên màn ảnh lớn Đài Loan.",
+      "about-p2":     "Được truyền cảm hứng từ các rạp chiếu phim độc lập trên thế giới, chúng tôi tin rằng tuyển chọn tốt có thể biến một buổi chiếu phim vượt khỏi giải trí — thành khởi điểm của sự thấu hiểu đa văn hóa.",
+      "comm-label":   "Đối Tác Cộng Đồng",
+      "comm-soon":    "Sắp Công Bố",
+      "comm-title":   "Đối Tác Cộng Đồng Xuyên Quốc Gia",
+      "comm-desc":    "Các hợp tác chính thức với hội sinh viên quốc tế, tổ chức lao động di cư và nhóm giao lưu văn hóa sẽ được thông báo tại đây khi được thiết lập.",
+      "part-label":   "04 — Hợp Tác Với Chúng Tôi",
+      "part-title":   "Cùng Đưa Câu Chuyện Lên Màn Ảnh Lớn",
+      "part-sub":     "Hợp Tác & Cộng Tác",
+      "part-desc":    "Chúng tôi chào đón các nhà phân phối phim thảo luận về bản quyền, các địa điểm nghệ thuật hợp tác không gian, và đề xuất chung cho các quỹ giao lưu văn hóa.",
+      "p1-title":     "Bản Quyền Phim",
+      "p1-sub":       "Dành Cho Nhà Phân Phối & Đạo Diễn",
+      "p1-desc":      "Nhà phân phối, hãng phim và nhà làm phim độc lập được chào đón thảo luận về quyền chiếu và chia sẻ doanh thu.",
+      "p2-title":     "Hợp Tác Địa Điểm",
+      "p2-sub":       "Dành Cho Không Gian & Địa Điểm",
+      "p2-desc":      "Không gian nghệ thuật, quán cà phê và địa điểm ngoài trời — chào đón cùng nhau tạo ra đêm chiếu phim.",
+      "p3-title":     "Quỹ Văn Hóa",
+      "p3-sub":       "Đơn Đăng Ký Chung",
+      "p3-desc":      "Quỹ giao lưu văn hóa từ các cơ quan chính phủ — chúng tôi chào đón đối tác đồng đăng ký và đề xuất.",
+    },
+    tl: {
+      "nav-event":    "Kaganapan",
+      "nav-features": "Brand",
+      "nav-about":    "Tungkol",
+      "nav-partner":  "Pakikiisa",
+      "hero-label":   "Malapit na · 2026",
+      "hero-title":   "Proyektong Sinehan ng Timog Silangang Asya",
+      "hero-desc":    "Isang paunting independyenteng sinehan na nakatuon sa kulturang Timog Silangang Asya at mga kwento ng diaspora.",
+      "hero-btn-survey": "Sagutan ang Survey",
+      "hero-btn-ig":  "Sundan sa Instagram ↗",
+      "event-label":  "Susunod na Kaganapan",
+      "event-title":  "Susunod na Kaganapan<br/>Ihahayag pa",
+      "event-tba":    "Ilalabas na ang mga detalye",
+      "event-date":   "Petsa",
+      "event-venue":  "Lugar",
+      "event-admission": "Bayad sa Pasok",
+      "feat-label":   "02 — Tampok ng Brand",
+      "feat-title":   "Karanasan sa Sinehan",
+      "feat-sub":     "Ano ang Aming Inaalok",
+      "feat-tagline": "Maliit na koponan, malalim na pagpili. Naniniwala kami na ang isang pagpapalabas ay maaaring maging sinehan, komunidad, at pauwi.",
+      "c01-title":    "Pelikulang Tahanan mula sa SEA",
+      "c01-sub":      "Mga Pelikulang Independyente ng SEA",
+      "c01-desc":     "Maingat na piniling mga pelikulang independyente ng Timog Silangang Asya na bihirang makita sa mainstream na sinehan, ngunit pinakamalapit sa pulso ng inyong tahanan. Makita ang iyong sariling kwento sa malaking screen.",
+      "c02-title":    "Dalawang Wika na Subtitle",
+      "c02-sub":      "Chinese at Wika ng Inyong Tahanan",
+      "c02-desc":     "Bawat pagpapalabas ay may subtitle sa Chinese at sa inyong katutubong wika (Indonesian / Vietnamese / Filipino), para maranasan mo ang pelikula nang walang hadlang kahit malayo sa tahanan.",
+      "c03-title":    "Pagkain, Inumin at Komunidad",
+      "c03-sub":      "Pakiramdam ng Tahanan",
+      "c03-desc":     "Pamilyar na inumin, merienda mula sa tahanan, at isang gabi kasama ang mga kababayan. Gawing karanasang ibabahagi ang panonood ng pelikula.",
+      "c04-title":    "Diyalogo Pagkatapos ng Palabas",
+      "c04-sub":      "Talakayan ng Iba't Ibang Kultura",
+      "c04-desc":     "Ang palabas ay simula pa lamang. Pagkatapos, magkukuwentuhan tayo — hayaang makinig sa isa't isa ang mga manonood mula sa iba't ibang kultura sa iisang espasyo.",
+      "c05-title":    "LFS Screenwriting MA · Malalim na Pagpili",
+      "c05-sub":      "London Film School · Kwento-batay na Kuratan",
+      "c05-desc":     "Pinili ng isang nagtapos ng MA Screenwriting sa London Film School (LFS). Bawat palabas ay may malinaw na temang naratibo at pananaw — hindi basta-basta listahan. Ito ang nagpapaiba sa DLB.",
+      "about-label":  "03 — Tungkol sa Amin",
+      "about-title":  "Sino Kami",
+      "about-p1":     "Ang DLB Entertainment ay isang dalawang-taong micro-team. Maliit ang laki, ngunit malaki ang ambisyon — nais naming dalhin ang internasyonal na pananaw at mga kwento ng mga manggagawang migranteng SEA sa malaking screen ng Taiwan.",
+      "about-p2":     "Inspirado ng mga independyenteng sinehan sa buong mundo, naniniwala kami na ang mahusay na pagpili ay maaaring gawing higit pa sa libangan ang isang palabas — isang simula ng pag-unawa sa pagitan ng mga kultura.",
+      "comm-label":   "Mga Kasosyong Komunidad",
+      "comm-soon":    "Malapit nang Ihayag",
+      "comm-title":   "Mga Transnasyonal na Kasosyong Komunidad",
+      "comm-desc":    "Ang mga pormal na pakikipagtulungan sa mga asosasyon ng internasyonal na estudyante, organisasyon ng migranteng manggagawa, at mga grupong pangkalikasang pagpapalitan ay ihahayag dito.",
+      "part-label":   "04 — Makiisa sa Amin",
+      "part-title":   "Dalhin Nating Kasama ang mga Kwento sa Malaking Screen",
+      "part-sub":     "Pakikiisa & Pakikipagtulungan",
+      "part-desc":    "Tinatanggap namin ang mga distributor ng pelikula para sa usapan sa lisensya, mga lugar ng sining para sa pakikipagtulungan, at mga co-proposal para sa mga gawad ng pagpapalitang pangkultura.",
+      "p1-title":     "Lisensya ng Pelikula",
+      "p1-sub":       "Para sa mga Distributor at Filmmakers",
+      "p1-desc":      "Ang mga distributor, studio at independyenteng filmmaker ay tinatanggap para talakayin ang mga karapatan sa pagpapalabas at pagbabahagi ng kita.",
+      "p2-title":     "Pakikiisa sa Lugar",
+      "p2-sub":       "Para sa mga Espasyo at Lugar",
+      "p2-desc":      "Mga espasyong pansining, cafe at lugar sa labas — tinatanggap para sabay na lumikha ng isang gabing pagpapalabas.",
+      "p3-title":     "Mga Gawad Pangkultura",
+      "p3-sub":       "Magsamang Mag-apply",
+      "p3-desc":      "Mga gawad ng pagpapalitang pangkultura mula sa mga ahensya ng pamahalaan — tinatanggap namin ang mga co-applicant at kasosyo sa proposal.",
+    }
+  };
+
+  function setLang(lang) {
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.dataset.i18n;
+      if (T[lang] && T[lang][key]) el.innerHTML = T[lang][key];
+    });
+    document.querySelectorAll("[data-lang]").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+    document.documentElement.lang = lang === "zh" ? "zh-Hant" : lang;
+    localStorage.setItem("dlb-lang", lang);
+  }
+
+  // restore last used language
+  const savedLang = localStorage.getItem("dlb-lang");
+  if (savedLang && T[savedLang]) setLang(savedLang);
 </script>
 
 </body>
